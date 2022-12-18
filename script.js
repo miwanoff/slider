@@ -4,11 +4,13 @@ let arrSrc = [
   "images/UK_advice-gardening-growing-poppies_header.jpg",
 ]; // масив шляхів до картинок
 let i = 0;
+let effect = "none";
 let timer;
 let slider = document.getElementById("slider");
 let nextButton = document.getElementById("next");
 let startButton = document.getElementById("start");
 let miniatures = document.getElementsByClassName("mini");
+let effectButton = document.getElementById("get_effect");
 
 function next() {
   if (i >= arrSrc.length - 1) {
@@ -37,8 +39,31 @@ function showSlide(event) {
   slider.src = imageMini.src;
 }
 
+function getEffect() {
+  let ef = document.forms.effects;
+  for (let i = 0; i < ef.length; i++) {
+    if (ef[i].checked) {
+      effect = ef[i].value;
+    }
+  }
+}
+
+function changeEffect() {
+  removeEffect();
+  //....
+}
+
+function addEffect() {
+  slider.classList.add("effect");
+}
+
+function removeEffect() {
+  slider.classList.remove("effect");
+}
+
 nextButton.addEventListener("click", next);
 startButton.addEventListener("click", start);
+effectButton.addEventListener("click", getEffect);
 
 for (let j = 0; j < miniatures.length; j++) {
   miniatures[j].addEventListener("click", showSlide);
