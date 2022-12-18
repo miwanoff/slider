@@ -4,8 +4,10 @@ let arrSrc = [
   "images/UK_advice-gardening-growing-poppies_header.jpg",
 ]; // масив шляхів до картинок
 let i = 0;
+let timer;
 let slider = document.getElementById("slider");
 let nextButton = document.getElementById("next");
+let startButton = document.getElementById("start");
 
 function next() {
   if (i >= arrSrc.length - 1) {
@@ -23,4 +25,11 @@ function next() {
 //     slider.src = arrSrc[i];
 //   }
 
+function start() {
+  timer = setInterval(function () {
+    next();
+  }, 3000);
+}
+
 nextButton.addEventListener("click", next);
+startButton.addEventListener("click", start);
